@@ -9,6 +9,7 @@ GEM
       mocha (~> 0.13)
     coderay (1.1.0)
     daemons (1.1.9)
+    dotenv (0.9.0)
     metaclass (0.0.2)
     method_source (0.8.2)
     mocha (0.14.0)
@@ -28,4 +29,5 @@ DEPENDENCIES
   assert (~> 2.7)
   assert-mocha (~> 1.1)
   daemons (~> 1.0)
+  dotenv
   pry-nav
