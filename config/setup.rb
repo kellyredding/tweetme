@@ -10,5 +10,4 @@ Dotenv.load
 # add load paths
 root = Pathname.new(File.expand_path('../..', __FILE__))
 $LOAD_PATH.push root
-$LOAD_PATH.push root.join('app/models')
 $LOAD_PATH.push root.join('lib')
