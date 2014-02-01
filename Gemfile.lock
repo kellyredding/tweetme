@@ -1,0 +1,31 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    ansi (1.4.3)
+    assert (2.7.0)
+      ansi (~> 1.3)
+    assert-mocha (1.1.1)
+      assert (~> 2.0)
+      mocha (~> 0.13)
+    coderay (1.1.0)
+    daemons (1.1.9)
+    metaclass (0.0.2)
+    method_source (0.8.2)
+    mocha (0.14.0)
+      metaclass (~> 0.0.1)
+    pry (0.9.12.6)
+      coderay (~> 1.0)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+    pry-nav (0.2.3)
+      pry (~> 0.9.10)
+    slop (3.4.7)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  assert (~> 2.7)
+  assert-mocha (~> 1.1)
+  daemons (~> 1.0)
+  pry-nav

@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+# script/daemon run
+# script/daemon start
+# script/daemon restart
+# script/daemon stop
+
+require File.expand_path('../../config/init', __FILE__)
+require 'daemons'
+
+log_folder = File.expand_path("../../log", __FILE__)
+Dir.mkdir(log_folder) unless File.exists?(log_folder)
+
+file = File.expand_path("../../lib/tweetme.rb", __FILE__)
+opts = {
+  :app_name => "tweetme",
+  :dir_mode => :normal,
+  :dir => log_folder,
+  :log_output => true,
+  :backtrace => true,
+}
+
+Daemons.run(file, opts)
