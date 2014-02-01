@@ -1,5 +1,6 @@
 *.gem
 *.log
+*.output
 *.rbc
 .rbx/
 .bundle
