@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'dotenv'
+gem 't'
 
 group :daemon do
   gem 'daemons', '~> 1.0'

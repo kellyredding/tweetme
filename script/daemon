@@ -11,7 +11,7 @@ require 'daemons'
 log_folder = File.expand_path("../../log", __FILE__)
 Dir.mkdir(log_folder) unless File.exists?(log_folder)
 
-file = File.expand_path("../../lib/tweetme.rb", __FILE__)
+file = File.expand_path("../../lib/tweetme/daemon.rb", __FILE__)
 opts = {
   :app_name => "tweetme",
   :dir_mode => :normal,
