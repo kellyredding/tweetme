@@ -8,7 +8,7 @@ group :daemon do
 end
 
 group :test do
-  gem 'assert',       "~> 2.7"
+  gem 'assert',       "~> 2.8"
   gem 'assert-mocha', "~> 1.1"
 end
 

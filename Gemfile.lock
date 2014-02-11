@@ -3,7 +3,7 @@ GEM
   specs:
     addressable (2.3.5)
     ansi (1.4.3)
-    assert (2.7.0)
+    assert (2.8.0)
       ansi (~> 1.3)
     assert-mocha (1.1.1)
       assert (~> 2.0)
@@ -73,7 +73,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  assert (~> 2.7)
+  assert (~> 2.8)
   assert-mocha (~> 1.1)
   daemons (~> 1.0)
   dotenv
