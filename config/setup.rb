@@ -4,8 +4,10 @@ require 'rubygems'
 ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile', __FILE__)
 require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
 
+ENV['TWEETME_ENV'] ||= 'development'
+
 require 'dotenv'
-Dotenv.load
+Dotenv.load('.env', ".env.#{ENV['TWEETME_ENV']}")
 
 # add load paths
 root = Pathname.new(File.expand_path('../..', __FILE__))
