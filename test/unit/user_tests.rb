@@ -2,6 +2,7 @@ require 'assert'
 require 'tweetme/user'
 
 require 'assert/factory'
+require 'tweetme/logger'
 
 class Tweetme::User
 
@@ -39,14 +40,16 @@ class Tweetme::User
   class InstanceTests < UnitTests
     desc "instance"
     setup do
-      @username = Assert::Factory.string
+      @username = 'user-name'
       @user = Tweetme::User.new(@username)
     end
     subject{ @user }
 
     should have_readers :username
     should have_writers :current_tweet
-    should have_imeths :trc_path, :current_tweet_path, :current_tweet, :save
+    should have_imeths :trc_path, :current_tweet_path
+    should have_imeths :current_tweet, :logger
+    should have_imeths :save
 
     should "know its username" do
       assert_equal @username, subject.username
@@ -62,6 +65,11 @@ class Tweetme::User
 
     should "default the current tweet" do
       assert_equal '', subject.current_tweet
+    end
+
+    should "build a user-specific logger in the logger root" do
+      assert_kind_of Tweetme::Logger, subject.logger
+      assert_equal subject.username, subject.logger.log_type
     end
 
     protected

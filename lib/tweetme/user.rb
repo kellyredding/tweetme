@@ -1,4 +1,5 @@
 require 'pathname'
+require 'tweetme/logger'
 
 module Tweetme
 
@@ -33,6 +34,10 @@ module Tweetme
 
     def current_tweet
       @current_tweet ||= get_current_tweet(self.current_tweet_path)
+    end
+
+    def logger
+      @logger ||= UserLogger.new(self.username)
     end
 
     def save
