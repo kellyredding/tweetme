@@ -7,31 +7,46 @@ class Tweetme::User
 
   class UnitTests < Assert::Context
     desc "Tweetme::User"
+    subject{ Tweetme::User }
+
+    should have_imeths :config_root, :all
+
+    should "know its trc and curren tweet file names" do
+      assert_equal '.trc', subject::TRC_FILE_NAME
+      assert_equal '.current-tweet', subject::CURRENT_TWEET_FILE_NAME
+    end
+
+    should "be able to set the config root" do
+      prev_root = subject.config_root
+      assert_not_nil prev_root
+
+      subject.config_root('path/to/root')
+      assert_equal 'path/to/root', subject.config_root.to_s
+
+      subject.config_root(prev_root)
+    end
+
+    should "build instances from a list of user names" do
+      list = "joe,sue,bob"
+      users = subject.all(list)
+      assert_equal 3, users.size
+      assert_kind_of subject, users.first
+      assert_equal list, users.map(&:username).join(',')
+    end
+
+  end
+
+  class InstanceTests < UnitTests
+    desc "instance"
     setup do
       @username = Assert::Factory.string
       @user = Tweetme::User.new(@username)
     end
     subject{ @user }
 
-    should have_cmeths :config_root
     should have_readers :username
     should have_writers :current_tweet
     should have_imeths :trc_path, :current_tweet_path, :current_tweet, :save
-
-    should "know its trc and curren tweet file names" do
-      assert_equal '.trc', TRC_FILE_NAME
-      assert_equal '.current-tweet', CURRENT_TWEET_FILE_NAME
-    end
-
-    should "be able to set the config root" do
-      prev_root = subject.class.config_root
-      assert_not_nil prev_root
-
-      subject.class.config_root('path/to/root')
-      assert_equal 'path/to/root', subject.class.config_root.to_s
-
-      subject.class.config_root(prev_root)
-    end
 
     should "know its username" do
       assert_equal @username, subject.username
@@ -57,7 +72,7 @@ class Tweetme::User
 
   end
 
-  class ValidUserTests < UnitTests
+  class ValidUserTests < InstanceTests
     desc "that has valid, non-empty configs"
     setup do
       @user = Tweetme::User.new('valid')
@@ -75,7 +90,7 @@ class Tweetme::User
 
   end
 
-  class InvalidUserTests < UnitTests
+  class InvalidUserTests < InstanceTests
     desc "that has involid configs"
     setup do
       @user = Tweetme::User.new('invalid')
@@ -91,7 +106,7 @@ class Tweetme::User
 
   end
 
-  class EmptyUserTests < UnitTests
+  class EmptyUserTests < InstanceTests
     desc "that has empty configs"
     setup do
       @user = Tweetme::User.new('empty')
@@ -107,7 +122,7 @@ class Tweetme::User
 
   end
 
-  class SaveTests < UnitTests
+  class SaveTests < InstanceTests
     desc "when saving"
     setup do
       @user = Tweetme::User.new('valid')
