@@ -26,6 +26,13 @@ GEM
     json (1.8.1)
     launchy (2.4.2)
       addressable (~> 2.3)
+    little-plugger (1.1.3)
+    logging (1.8.2)
+      little-plugger (>= 1.1.3)
+      multi_json (>= 1.8.4)
+    logsly (1.0.2)
+      logging (~> 1.7)
+      ns-options (~> 1.1)
     memoizable (0.4.0)
       thread_safe (~> 0.1.3)
     metaclass (0.0.2)
@@ -35,6 +42,7 @@ GEM
     multi_json (1.8.4)
     multipart-post (2.0.0)
     naught (1.0.0)
+    ns-options (1.1.6)
     oauth (0.4.7)
     pry (0.9.12.6)
       coderay (~> 1.0)
@@ -77,5 +85,6 @@ DEPENDENCIES
   assert-mocha (~> 1.1)
   daemons (~> 1.0)
   dotenv
+  logsly
   pry-nav
   t
