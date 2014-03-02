@@ -10,7 +10,7 @@ class Tweetme::User
     desc "Tweetme::User"
     subject{ Tweetme::User }
 
-    should have_imeths :config_root, :all
+    should have_imeths :config_root
 
     should "know its trc and curren tweet file names" do
       assert_equal '.trc', subject::TRC_FILE_NAME
@@ -25,14 +25,6 @@ class Tweetme::User
       assert_equal 'path/to/root', subject.config_root.to_s
 
       subject.config_root(prev_root)
-    end
-
-    should "build instances from a list of user names" do
-      list = "joe,sue,bob"
-      users = subject.all(list)
-      assert_equal 3, users.size
-      assert_kind_of subject, users.first
-      assert_equal list, users.map(&:username).join(',')
     end
 
   end

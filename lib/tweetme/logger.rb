@@ -32,12 +32,6 @@ module Tweetme
     end
   end
 
-  module MainLogger
-    def self.new(opts = nil)
-      Tweetme::Logger.new('main', opts || {})
-    end
-  end
-
   module UserLogger
     def self.new(username, opts = nil)
       Tweetme::Logger.new(username, opts || {})

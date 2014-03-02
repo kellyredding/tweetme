@@ -65,32 +65,10 @@ class Tweetme::Logger
 
   end
 
-  class MainLoggerTests < UnitTests
-    desc "main logger"
-    setup do
-      @main_logger = Tweetme::MainLogger.new
-    end
-    subject { @main_logger }
-
-    should "be a Logger" do
-      assert_kind_of Tweetme::Logger, subject
-    end
-
-    should "have 'main' as its log type" do
-      assert_equal 'main', subject.log_type
-    end
-
-    should "have the same level and outputs as a normal logger" do
-      assert_equal @logger.level,   subject.level
-      assert_equal @logger.outputs, subject.outputs
-    end
-
-  end
-
   class UserLoggerTests < UnitTests
     desc "user logger"
     setup do
-      @user_logger = Tweetme::UserLogger.new('joe')
+      @user_logger = Tweetme::UserLogger.new(ENV['TWEETME_USER'])
     end
     subject { @user_logger }
 
@@ -104,7 +82,7 @@ class Tweetme::Logger
     end
 
     should "have ther username as the log_type" do
-      assert_equal 'joe', subject.log_type
+      assert_equal ENV['TWEETME_USER'], subject.log_type
     end
 
   end
