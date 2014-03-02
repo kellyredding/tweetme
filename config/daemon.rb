@@ -1,12 +1,3 @@
-require 'tweetme/logger'
-require 'tweetme/tweet'
-require 'tweetme/user'
+require 'tweetme'
 
-logger = Tweetme::UserLogger.new(ENV['TWEETME_USER'])
-logger.info "Starting daemon"
-user = Tweetme::User.new(ENV['TWEETME_USER'])
-logger.info "Tweetme User: #{user.inspect}"
-
-while(true) do
-  sleep 1
-end
+Tweetme.run(ENV['TWEETME_USER'], :interval => ENV['TWEETME_INTERVAL'].to_i)
