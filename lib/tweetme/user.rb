@@ -13,10 +13,6 @@ module Tweetme
       @config_root
     end
 
-    def self.all(usernames)
-      usernames.split(',').map{ |username| self.new(username) }
-    end
-
     attr_reader :username
     attr_writer :current_tweet
 
