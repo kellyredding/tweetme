@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'dotenv'
 gem 'logsly'
+gem 'scmd'
 gem 't'
 
 group :daemon do
